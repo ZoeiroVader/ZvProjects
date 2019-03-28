@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="binary">
+    <button onclick="Convert()">Calcular</button>
+    <div id="bin2dec"></div>
+</body>
+<script>
+    function Convert() {
+        var resultado = binary.value.split(""); // Separa os números em um array
+        var aviso = false; // Variável q evita q o aviso fique se repetindo para cada número
+        var decimal= 0; // Será o valor convertido
+        var c = resultado.length - 1; //serve como expoente do dois e o menos um faz com q ele chegue ao 0
+
+        for (let i = 0; i < resultado.length; i++) { // Looping  que se repetirá para cada numero dentro do array/vetor 
+            if (resultado[i] != 0 && resultado[i] != 1 && !aviso) {//verifica se tem números diferentes de 0 ou 1
+                alert("é binário poraa");
+                aviso = true;
+            }else{                
+                var num = (2 ** Number(c));//Eleva o 2 a posição do array -1               
+                decimal = decimal + (num * resultado[i]);//multiplica a variável num por 0 ou 1 e depois soma com o valor decimal
+
+                //Testes
+                console.log("2 elevado a "+c+ " : " + num);
+                console.log("bit: "+resultado[i]);
+                console.log("Soma dos bits: " + decimal);
+                console.log("\n");
+
+                c--;//Diminui o contador
+            }
+            aviso = false; //faz com que o aviso possa ser mostrado novamente
+        }
+
+        bin2dec.innerHTML = decimal;//Mostra o valor obitido depois da conversão
+    }
+
+</script>
+</html>
