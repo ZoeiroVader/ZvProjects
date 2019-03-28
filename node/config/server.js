@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 var consign = require('consign');
 consign()
@@ -10,5 +11,7 @@ consign()
 
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 module.exports = app;
