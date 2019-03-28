@@ -1,0 +1,25 @@
+{
+  "name": "pn_node",
+  "version": "1.0.0",
+  "description": "Site de noticias baseado no projeto ensinado na udemy",
+  "main": "noticias.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZoeiroVader/ZvProjects.git"
+  },
+  "author": "Guilherme Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZoeiroVader/ZvProjects/issues"
+  },
+  "homepage": "https://github.com/ZoeiroVader/ZvProjects#readme",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
