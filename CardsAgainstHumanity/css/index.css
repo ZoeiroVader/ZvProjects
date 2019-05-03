@@ -1,0 +1,19 @@
+.cartas{
+    position: absolute;
+    bottom: 0;
+    width: 80vw;
+    height: 200px;
+    overflow: auto;
+}
+.actions{
+    position: absolute !important;
+    width: 20vw;
+    height: 200px;
+    bottom: 0;
+    right: 0;
+}
+.carta{
+    height: 200px;
+    display: flex;
+    background-color: blueviolet;
+}
