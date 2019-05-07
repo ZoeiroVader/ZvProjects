@@ -1,12 +1,11 @@
-module.exports = function (app) {
-    app.get('/addnoticia', function (req, res) {
-        res.render("admin/form_add_noticia");
+module.exports = (app) =>{
+    app.get('/form', (req, res)=>{
+        app.app.controllers.admin.form(app, req, res);
     });
-}
 
-module.exports = function (app) {
-    app.post('/noticias/salvar', function (req, res) {
-        var noticias = req.body;
-        res.send(noticias);
+    app.post('/noticias/salvar', (req, res)=>{
+        app.app.controllers.admin.salvarNoticia(app, req, res);
+           
+        //res.render('admin/form_add_noticia');
     });
 }
