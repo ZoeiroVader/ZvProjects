@@ -23,13 +23,35 @@ module.exports = function(application){
 
 	application.post('/login', function(req, res){
 		var login = req.body;
+		console.log(login);
+		
 		var auth = false;
-		for(user of users){
-            if (user.username == login.username && user.password == login.pass) {
-				auth = true;
-			}          
-		}
-		auth ? res.send('Login Correto!') : res.redirect('/');
+		// for(user of users){
+        //     if (user.username == login.username && user.password == login.pass) {
+		// 		auth = true;
+		// 	}          
+		// }
+		// auth ? res.send('Login Correto!') : res.redirect('/');
+
+		sql.connect(config).then(() => {
+			return sql.query`Select * from Usuarios`
+		}).then(result => {
+			for(user of result.recordset){
+				console.log(user.Nome, user.Senha);
+				
+			    if (user.Nome == login.username && user.Senha == login.pass) {
+					console.log("Chegui");
+					
+					auth = true;
+				}	
+			}
+			auth ? res.send('Login Correto!') : res.redirect('/');
+			sql.close()
+		}).catch(err => {
+			console.log(err);
+			sql.close()
+			res.send('Falha ao estabelecer conexão com o banco');	
+		});
 	});
 	application.post('/register', function(req, res){
 		var register = req.body;
