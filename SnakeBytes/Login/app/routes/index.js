@@ -1,6 +1,5 @@
 var config = require('../../config/db')
 var sql = require('mssql')
-var clients;
 
 module.exports = function(application){
 	users = application.get('users');
@@ -16,7 +15,7 @@ module.exports = function(application){
 		}).catch(err => {
 			console.log(err);
 			sql.close()
-			res.send('Falha ao estabelecer conexão com o banco');	
+			res.send('Falha ao estabelecer conexão com o banco', err);	
 		});
 			
 	});
@@ -73,5 +72,8 @@ module.exports = function(application){
 			})
 			
 		})
+	});
+	application.get('/postlogin', function(req, res){
+		res.render("postlogin")
 	});
 }

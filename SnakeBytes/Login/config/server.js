@@ -13,6 +13,9 @@ var expressValidator = require('express-validator');
 /* iniciar o objeto do express */
 var app = express();
 
+//Recupera o modulo so socket.io e atrela o socket.io ao nosso servidor express.
+var io = require('socket.io');
+
 var users = [];
 
 /* setar as variáveis 'view engine' e 'views' do express */
@@ -37,5 +40,28 @@ consign()
 	.then('app/controllers')
 	.into(app);
 
+/* parametrizar a porta de escuta */
+var server = app.listen(3000, function(){
+	console.log('Servidor online');
+})
+
+var s = io(server);
+
+s.on('connection', (socket) => {//É mostrado quando alguem se conecta 
+	var user = {
+		Name : "Porra",
+		Pass : "123"
+	}
+	socket.userbd = user;
+
+	socket.emit('redirect', (data)=>{
+		data = {
+			user : "pass",
+			pass : "sad	"
+		}
+	})
+	
+})
+
 /* exportar o objeto app */
-module.exports = app, users;
+module.exports = app;
